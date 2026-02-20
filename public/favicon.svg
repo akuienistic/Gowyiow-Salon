@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- circle background using primary theme color -->
+  <circle cx="50" cy="50" r="50" fill="#7EB980" />
+  <!-- initials centered -->
+  <text x="50" y="55" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="bold" font-size="40" fill="#ffffff">G&amp;S</text>
+</svg>
