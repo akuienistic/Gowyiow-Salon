@@ -30,15 +30,16 @@ const Header = () => {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? "bg-background/95 backdrop-blur-md shadow-sm py-2"
-            : "bg-transparent py-4"
+          scrolled ? "bg-background/95 backdrop-blur-md shadow-sm py-2" : "bg-transparent py-4"
         }`}
       >
-        <div className="container flex items-center">
+        <div className="container flex items-center justify-between relative">
           <a
             href="#home"
-            onClick={(e) => { e.preventDefault(); handleNavClick("#home"); }}
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavClick("#home");
+            }}
             className="font-heading text-xl md:text-2xl font-bold text-cta-foreground tracking-tight"
           >
             Gowyiow
@@ -50,7 +51,10 @@ const Header = () => {
               <a
                 key={item.label}
                 href={item.href}
-                onClick={(e) => { e.preventDefault(); handleNavClick(item.href); }}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick(item.href);
+                }}
                 className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-white hover:text-primary rounded-md transition-colors"
               >
                 <item.icon className="w-4 h-4" />
@@ -71,7 +75,7 @@ const Header = () => {
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden p-2 text-foreground"
+            className="md:hidden p-2 text-foreground ml-auto"
             onClick={() => setSidebarOpen(true)}
             aria-label="Open menu"
           >

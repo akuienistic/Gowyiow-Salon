@@ -21,10 +21,7 @@ const Footer = () => {
             <ul className="space-y-2">
               {["Home", "Services", "Gallery", "About", "Contact"].map((item) => (
                 <li key={item}>
-                  <a
-                    href={`#${item.toLowerCase()}`}
-                    className="text-sm hover:text-primary transition-colors"
-                  >
+                  <a href={`#${item.toLowerCase()}`} className="text-sm hover:text-primary transition-colors">
                     {item}
                   </a>
                 </li>
@@ -42,11 +39,15 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4 flex-shrink-0 text-primary" />
-                <a href="tel:0928882267" className="hover:text-primary transition-colors">0928 882 267</a>
+                <a href="tel:0928882267" className="hover:text-primary transition-colors">
+                  0928 882 267
+                </a>
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4 flex-shrink-0 text-primary" />
-                <a href="tel:0920705250" className="hover:text-primary transition-colors">0920 705 250</a>
+                <a href="tel:0920705250" className="hover:text-primary transition-colors">
+                  0920 705 250
+                </a>
               </li>
             </ul>
           </div>
@@ -65,16 +66,18 @@ const Footer = () => {
               Book Now
             </a>
             <div className="flex gap-3 mt-4">
-              <a href="#" aria-label="Facebook" className="p-2 hover:text-primary transition-colors"><Facebook className="w-4 h-4" /></a>
-              <a href="#" aria-label="Instagram" className="p-2 hover:text-primary transition-colors"><Instagram className="w-4 h-4" /></a>
+              <a href="#" aria-label="Facebook" className="p-2 hover:text-primary transition-colors">
+                <Facebook className="w-4 h-4" />
+              </a>
+              <a href="#" aria-label="Instagram" className="p-2 hover:text-primary transition-colors">
+                <Instagram className="w-4 h-4" />
+              </a>
             </div>
           </div>
         </div>
 
         <div className="border-t border-background/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-background/50">
-            © {currentYear} Gowyiow Skincare & Salon. All rights reserved.
-          </p>
+          <p className="text-xs text-background/50">© {currentYear} Gowyiow Skincare & Salon. All rights reserved.</p>
           <p className="text-xs text-background/50 md:ml-auto">
             Designed and built by{" "}
             <a
@@ -83,7 +86,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="text-primary hover:underline font-medium"
             >
-              Simon Akuien Atem
+              Simon Star Tech
             </a>
           </p>
         </div>

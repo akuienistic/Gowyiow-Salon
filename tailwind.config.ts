@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ['"Playfair Display"', 'Georgia', 'serif'],
-        body: ['Poppins', 'system-ui', 'sans-serif'],
+        heading: ['"Playfair Display"', "Georgia", "serif"],
+        body: ["Poppins", "system-ui", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -96,6 +96,14 @@ export default {
           from: { transform: "translateX(0)" },
           to: { transform: "translateX(-100%)" },
         },
+        "slide-in-right": {
+          from: { transform: "translateX(100%)" },
+          to: { transform: "translateX(0)" },
+        },
+        "slide-out-right": {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(100%)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -103,6 +111,8 @@ export default {
         "fade-in": "fade-in 0.6s ease-out forwards",
         "slide-in-left": "slide-in-left 0.3s ease-out",
         "slide-out-left": "slide-out-left 0.3s ease-in",
+        "slide-in-right": "slide-in-right 0.3s ease-out",
+        "slide-out-right": "slide-out-right 0.3s ease-in",
       },
     },
   },

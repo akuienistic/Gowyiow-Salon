@@ -8,6 +8,7 @@ import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import Loader from "@/components/Loader";
+import ScrollToTopButton from "@/components/ScrollToTopButton";
 
 const Index = () => {
   const [loading, setLoading] = useState(true);
@@ -40,7 +41,9 @@ const Index = () => {
       sameAs: [],
     });
     document.head.appendChild(script);
-    return () => { document.head.removeChild(script); };
+    return () => {
+      document.head.removeChild(script);
+    };
   }, []);
 
   useEffect(() => {
@@ -62,6 +65,7 @@ const Index = () => {
         <ContactSection />
       </main>
       <Footer />
+      <ScrollToTopButton />
     </div>
   );
 };

@@ -34,9 +34,7 @@ const MobileSidebar = ({ open, onClose, navItems, onNavClick }: MobileSidebarPro
   // Focus trap
   useEffect(() => {
     if (open && sidebarRef.current) {
-      const focusable = sidebarRef.current.querySelectorAll<HTMLElement>(
-        'a, button, [tabindex]:not([tabindex="-1"])'
-      );
+      const focusable = sidebarRef.current.querySelectorAll<HTMLElement>('a, button, [tabindex]:not([tabindex="-1"])');
       focusable[0]?.focus();
     }
   }, [open]);
@@ -51,7 +49,7 @@ const MobileSidebar = ({ open, onClose, navItems, onNavClick }: MobileSidebarPro
       {/* Sidebar */}
       <div
         ref={sidebarRef}
-        className="absolute top-0 left-0 h-full w-[50vw] min-w-[260px] max-w-[320px] bg-card shadow-2xl animate-slide-in-left flex flex-col"
+        className="absolute top-0 right-0 h-full w-[50vw] min-w-[260px] max-w-[320px] bg-card shadow-2xl animate-slide-in-right flex flex-col"
       >
         <div className="flex items-center justify-between p-4 border-b border-border">
           <span className="font-heading text-lg font-bold text-foreground">Gowyiow</span>
@@ -65,7 +63,10 @@ const MobileSidebar = ({ open, onClose, navItems, onNavClick }: MobileSidebarPro
             <a
               key={item.label}
               href={item.href}
-              onClick={(e) => { e.preventDefault(); onNavClick(item.href); }}
+              onClick={(e) => {
+                e.preventDefault();
+                onNavClick(item.href);
+              }}
               className="flex items-center gap-3 px-4 py-3 text-foreground/80 hover:text-primary hover:bg-primary/10 rounded-lg transition-colors"
             >
               <item.icon className="w-5 h-5" />

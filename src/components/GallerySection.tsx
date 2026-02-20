@@ -2,12 +2,36 @@ import { useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 const galleryImages = [
-  { src: "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80", alt: "Salon hair styling station", category: "Salon" },
-  { src: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80", alt: "Organic skincare products", category: "Skincare" },
-  { src: "https://images.unsplash.com/photo-1487412912498-0447578fcca8?w=600&q=80", alt: "Professional makeup application", category: "Makeup" },
-  { src: "https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?w=600&q=80", alt: "Hair coloring treatment", category: "Hair" },
-  { src: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80", alt: "Facial skincare treatment", category: "Skincare" },
-  { src: "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&q=80", alt: "Relaxing spa atmosphere", category: "Salon" },
+  {
+    src: "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80",
+    alt: "Salon hair styling station",
+    category: "Salon",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80",
+    alt: "Organic skincare products",
+    category: "Skincare",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1487412912498-0447578fcca8?w=600&q=80",
+    alt: "Professional makeup application",
+    category: "Makeup",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?w=600&q=80",
+    alt: "Hair coloring treatment",
+    category: "Hair",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80",
+    alt: "Facial skincare treatment",
+    category: "Skincare",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&q=80",
+    alt: "Relaxing spa atmosphere",
+    category: "Salon",
+  },
 ];
 
 const categories = ["All", "Salon", "Skincare", "Hair", "Makeup"];
@@ -74,23 +98,29 @@ const GallerySection = () => {
       {/* Lightbox */}
       {lightbox !== null && (
         <div
-          className="fixed inset-0 z-[70] flex items-center justify-center bg-foreground/90 backdrop-blur-sm"
-          onClick={() => setLightbox(null)}
+          className="fixed inset-0 z-[70] bg-foreground/90 backdrop-blur-sm flex items-center justify-center overflow-hidden h-screen w-screen"
           role="dialog"
           aria-modal="true"
           aria-label="Image lightbox"
         >
+          {/* prevent background from scrolling */}
+          <div className="absolute inset-0" onClick={() => setLightbox(null)} />
+
+          {/* controls always stay in viewport */}
           <button
             onClick={() => setLightbox(null)}
-            className="absolute top-4 right-4 p-2 text-background/80 hover:text-background"
+            className="fixed top-4 right-4 p-2 text-background/80 hover:text-background z-20"
             aria-label="Close lightbox"
           >
             <X className="w-7 h-7" />
           </button>
           {lightbox > 0 && (
             <button
-              onClick={(e) => { e.stopPropagation(); navigateLightbox(-1); }}
-              className="absolute left-4 p-2 text-background/80 hover:text-background"
+              onClick={(e) => {
+                e.stopPropagation();
+                navigateLightbox(-1);
+              }}
+              className="fixed left-4 top-1/2 transform -translate-y-1/2 p-2 text-background/80 hover:text-background z-20"
               aria-label="Previous image"
             >
               <ChevronLeft className="w-8 h-8" />
@@ -98,19 +128,24 @@ const GallerySection = () => {
           )}
           {lightbox < filtered.length - 1 && (
             <button
-              onClick={(e) => { e.stopPropagation(); navigateLightbox(1); }}
-              className="absolute right-4 p-2 text-background/80 hover:text-background"
+              onClick={(e) => {
+                e.stopPropagation();
+                navigateLightbox(1);
+              }}
+              className="fixed right-4 top-1/2 transform -translate-y-1/2 p-2 text-background/80 hover:text-background z-20"
               aria-label="Next image"
             >
               <ChevronRight className="w-8 h-8" />
             </button>
           )}
-          <img
-            src={filtered[lightbox].src.replace("w=600", "w=1200")}
-            alt={filtered[lightbox].alt}
-            className="max-w-[90vw] max-h-[85vh] object-contain rounded-lg"
-            onClick={(e) => e.stopPropagation()}
-          />
+
+          <div className="max-w-[90vw] max-h-[85vh] overflow-auto z-10">
+            <img
+              src={filtered[lightbox].src.replace("w=600", "w=1200")}
+              alt={filtered[lightbox].alt}
+              className="object-contain rounded-lg"
+            />
+          </div>
         </div>
       )}
     </section>

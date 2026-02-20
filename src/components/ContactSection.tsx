@@ -1,8 +1,5 @@
 import { useState, FormEvent } from "react";
-import {
-  User, Phone, Mail, Tag, CalendarDays, Clock, MessageSquare,
-  MapPin, CheckCircle, XCircle
-} from "lucide-react";
+import { User, Phone, Mail, Tag, CalendarDays, Clock, MessageSquare, MapPin, CheckCircle, XCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const ContactSection = () => {
@@ -53,7 +50,7 @@ const ContactSection = () => {
     // Build WhatsApp message
     const service = (data.get("service") as string) || "Not specified";
     const message = (data.get("message") as string) || "";
-    const whatsappText = `Hi, I'd like to book an appointment.\n\nName: ${name}\nPhone: ${phone}\nEmail: ${email || 'N/A'}\nService: ${service}\nDate: ${date || 'Flexible'}\nTime: ${time || 'Flexible'}\nMessage: ${message || 'N/A'}`;
+    const whatsappText = `Hi, I'd like to book an appointment.\n\nName: ${name}\nPhone: ${phone}\nEmail: ${email || "N/A"}\nService: ${service}\nDate: ${date || "Flexible"}\nTime: ${time || "Flexible"}\nMessage: ${message || "N/A"}`;
 
     const whatsappUrl = `https://wa.me/250928882267?text=${encodeURIComponent(whatsappText)}`;
 
@@ -89,9 +86,30 @@ const ContactSection = () => {
           <form onSubmit={handleSubmit} className="space-y-4 border border-border rounded-xl p-6" noValidate>
             {[
               { name: "name", label: "Your Name", type: "text", icon: User, required: true, placeholder: "Jane Doe" },
-              { name: "phone", label: "Phone / WhatsApp", type: "tel", icon: Phone, required: true, placeholder: "+250 928 882 267" },
-              { name: "email", label: "Email", type: "email", icon: Mail, required: false, placeholder: "jane@example.com" },
-              { name: "service", label: "Service", type: "text", icon: Tag, required: false, placeholder: "e.g. Organic Facial" },
+              {
+                name: "phone",
+                label: "Phone / WhatsApp",
+                type: "tel",
+                icon: Phone,
+                required: true,
+                placeholder: "+250 928 882 267",
+              },
+              {
+                name: "email",
+                label: "Email",
+                type: "email",
+                icon: Mail,
+                required: false,
+                placeholder: "jane@example.com",
+              },
+              {
+                name: "service",
+                label: "Service",
+                type: "text",
+                icon: Tag,
+                required: false,
+                placeholder: "e.g. Organic Facial",
+              },
             ].map((field) => (
               <div key={field.name}>
                 <label htmlFor={field.name} className="block text-sm font-medium text-foreground mb-1.5">
@@ -99,21 +117,31 @@ const ContactSection = () => {
                 </label>
                 <div className="relative">
                   <field.icon className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                  <input id={field.name} name={field.name} type={field.type} placeholder={field.placeholder} className={inputClass} />
+                  <input
+                    id={field.name}
+                    name={field.name}
+                    type={field.type}
+                    placeholder={field.placeholder}
+                    className={inputClass}
+                  />
                 </div>
               </div>
             ))}
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label htmlFor="date" className="block text-sm font-medium text-foreground mb-1.5">Preferred Date</label>
+                <label htmlFor="date" className="block text-sm font-medium text-foreground mb-1.5">
+                  Preferred Date
+                </label>
                 <div className="relative">
                   <CalendarDays className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                   <input id="date" name="date" type="date" className={inputClass} />
                 </div>
               </div>
               <div>
-                <label htmlFor="time" className="block text-sm font-medium text-foreground mb-1.5">Preferred Time</label>
+                <label htmlFor="time" className="block text-sm font-medium text-foreground mb-1.5">
+                  Preferred Time
+                </label>
                 <div className="relative">
                   <Clock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                   <input id="time" name="time" type="time" className={inputClass} />
@@ -122,7 +150,9 @@ const ContactSection = () => {
             </div>
 
             <div>
-              <label htmlFor="message" className="block text-sm font-medium text-foreground mb-1.5">Message</label>
+              <label htmlFor="message" className="block text-sm font-medium text-foreground mb-1.5">
+                Message
+              </label>
               <div className="relative">
                 <MessageSquare className="absolute left-3 top-3 w-4 h-4 text-muted-foreground" />
                 <textarea
@@ -171,9 +201,13 @@ const ContactSection = () => {
                 <div>
                   <p className="font-medium text-foreground">Phone</p>
                   <p className="text-sm">
-                    <a href="tel:0928882267" className="text-muted-foreground hover:text-primary transition-colors">0928 882 267</a>
+                    <a href="tel:0928882267" className="text-muted-foreground hover:text-primary transition-colors">
+                      0928 882 267
+                    </a>
                     {" / "}
-                    <a href="tel:0920705250" className="text-muted-foreground hover:text-primary transition-colors">0920 705 250</a>
+                    <a href="tel:0920705250" className="text-muted-foreground hover:text-primary transition-colors">
+                      0920 705 250
+                    </a>
                   </p>
                 </div>
               </div>
